@@ -28,16 +28,16 @@ def _repeat(image, pattern):
     return image
 
 
-def banner(name, adress, port=25565):
+def banner(name, address, port=25565):
     # Get all info
     server_name = font.parse(name)
     if port != 25565:
-        server_adress = font.parse('§8' + adress + '§7:§8' + str(port))
+        server_address = font.parse('§8' + address + '§7:§8' + str(port))
     else:
-        server_adress = font.parse('§8' + adress)
+        server_address = font.parse('§8' + address)
 
     try:
-        info = network.get_server_info(adress, port=port)
+        info = network.get_server_info(address, port=port)
 
         motd = info['description']
         if type(motd) == dict:
@@ -88,8 +88,8 @@ def banner(name, adress, port=25565):
         font.render((text_offset, y_offset + text_size*2),
                     font.parse(motd[1]), image)
 
-    adress_width = font.get_width(server_adress)
-    font.render_small((width-margin-adress_width, 60), server_adress, image)
+    address_width = font.get_width(server_address)
+    font.render_small((width-margin-address_width, 60), server_address, image)
 
     if icon is not None:
         image.paste(icon, (5, 5), mask=icon)
